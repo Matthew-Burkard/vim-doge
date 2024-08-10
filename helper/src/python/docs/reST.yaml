@@ -5,8 +5,7 @@ templates:
     node_types:
       - class_definition
     template: |
-      """
-      [TODO:description]
+      """[TODO:description]
       {% if attributes %}
       ~
       Attributes:
@@ -20,8 +19,7 @@ templates:
     node_types:
       - function_definition
     template: |
-      """
-      [TODO:description]
+      """[TODO:description]
       {% if params or return_type or exceptions %}
       ~
       {% endif %}
