@@ -259,7 +259,7 @@ function! doge#install(...) abort
       let l:binary_version = split(doge#utils#trim(system(shellescape(l:filepath) . ' --version')), ' ')[1]
       let l:local_version = doge#utils#trim(readfile(g:doge_dir . '/.version')[0])
       if l:binary_version ==# l:local_version
-        echom g:doge_prefix . ' already using latest version, skipping binary download'
+        echom g:doge_prefix . ' already using latest version, skipping binary compile'
         return 0
       endif
     endif
@@ -280,7 +280,8 @@ function! doge#install(...) abort
     let l:command .= ' -Command ' . shellescape('Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force; & ' . shellescape(g:doge_dir . '/scripts/install.ps1')) . ' ' . shellescape(g:doge_install_path)
     let l:term_height = 8
   else
-    let l:command = shellescape(g:doge_dir . '/scripts/install.sh') . ' ' . shellescape(g:doge_install_path)
+    echom 'Building from source'
+    let l:command = shellescape(g:doge_dir . '/scripts/build.sh')
     let l:term_height = 4
   endif
 
